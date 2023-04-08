@@ -6,9 +6,12 @@
 
 
 # Aplikasi ini guna memenuhi tugas PBO yang di berikan oleh:bpk.Gusti Nyoman Budiadnyana SKOM.M.M
+<<<<<<< HEAD
 
 
 # CodeIgniter 4 Application Starter
+=======
+>>>>>>> ba9e8992afbf4824bcd356b8d1e634d535a894e6
 
 ## What is CodeIgniter?
 
