@@ -3,11 +3,14 @@
 namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourcePresenter;
+use App\Models\BahanbakuModel;
 use App\Models\ProduksiModel;
 
 class Produksi extends ResourcePresenter
 {
+    
     function __construct(){
+        $this->bahan_baku = new BahanbakuModel();
         $this->produksi = new ProduksiModel();
     }
     /**
@@ -17,7 +20,7 @@ class Produksi extends ResourcePresenter
      */
     public function index()
     {
-        $data['produksi'] = $this->produksi->findAll();
+        $data['produksi'] = $this->contact->findAll();
         return view('produksi/produksi', $data);
     }
 
@@ -40,7 +43,7 @@ class Produksi extends ResourcePresenter
      */
     public function new()
     {
-        return view('produksi/tambah_produksi');
+        return view('produksi/new');
     }
 
     /**

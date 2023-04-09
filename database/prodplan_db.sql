@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 07, 2023 at 04:28 PM
--- Server version: 8.0.30
--- PHP Version: 7.4.12
+-- Waktu pembuatan: 09 Apr 2023 pada 06.03
+-- Versi server: 8.0.30
+-- Versi PHP: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bahan_baku`
+-- Struktur dari tabel `bahan_baku`
 --
 
 CREATE TABLE `bahan_baku` (
@@ -36,18 +36,19 @@ CREATE TABLE `bahan_baku` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `bahan_baku`
+-- Dumping data untuk tabel `bahan_baku`
 --
 
 INSERT INTO `bahan_baku` (`id_bahan_baku`, `nama_bahan_baku`, `deskripsi_bahan_baku`, `satuan_bahan_baku`, `stok_bahan_baku`) VALUES
 (1, 'Tepung terigu', 'Tepung terigu protein tinggi', 'Kg', 100),
 (2, 'Gula pasir', 'Gula pasir halus', 'Kg', 50),
-(3, 'Tepung Tapioka', 'Tepung Berkarbohidrat Tinggi', 'kg', 56);
+(3, 'Tepung Tapioka', 'Tepung Berkarbohidrat Tinggi', 'kg', 56),
+(6, 'pisang kepok', 'pisang kepok lampung', 'Kg', 245);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `detail_produksi`
+-- Struktur dari tabel `detail_produksi`
 --
 
 CREATE TABLE `detail_produksi` (
@@ -61,7 +62,7 @@ CREATE TABLE `detail_produksi` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- Struktur dari tabel `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -75,7 +76,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
--- Dumping data for table `migrations`
+-- Dumping data untuk tabel `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`, `batch`) VALUES
@@ -84,7 +85,7 @@ INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `produk`
+-- Struktur dari tabel `produk`
 --
 
 CREATE TABLE `produk` (
@@ -98,7 +99,7 @@ CREATE TABLE `produk` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `produksi`
+-- Struktur dari tabel `produksi`
 --
 
 CREATE TABLE `produksi` (
@@ -108,10 +109,19 @@ CREATE TABLE `produksi` (
   `tanggal_produksi` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Dumping data untuk tabel `produksi`
+--
+
+INSERT INTO `produksi` (`id_produksi`, `id_bahan_baku`, `jumlah_produksi`, `tanggal_produksi`) VALUES
+(4, 1, 670, '2023-04-18'),
+(5, 2, 790, '2023-04-24'),
+(6, 3, 556, '2023-04-29');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -125,11 +135,11 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id_user`, `name_user`, `email_user`, `password_user`, `info_user`, `created_at`, `updated_at`) VALUES
-(1, 'Administrator', 'devagil@gmail.com', '$2y$10$Otgu0ZQBT7ZdYroPk1Y8ourKB22Pb8dyDrarXcREJwgClAVaN74fq', NULL, NULL, NULL),
+(1, 'Agil Pamungkas', 'devagil@gmail.com', '$2y$10$Otgu0ZQBT7ZdYroPk1Y8ourKB22Pb8dyDrarXcREJwgClAVaN74fq', NULL, NULL, NULL),
 (2, 'Repa Okari', 'repa@gmail.com', '$2y$10$4gPk.1qYncB2924qo5JmdOm2pCnL2XkrnOCXSSVRoF2y2gB2ISkFO', NULL, NULL, NULL),
 (3, 'Roby Fadli', 'roby@gmail.com', '$2y$10$C1t2.OHrV5hvsN/lSgKgAeLa4RZecXDgIZscIP05rftGeFDCjuxr.', NULL, NULL, NULL);
 
@@ -138,13 +148,13 @@ INSERT INTO `users` (`id_user`, `name_user`, `email_user`, `password_user`, `inf
 --
 
 --
--- Indexes for table `bahan_baku`
+-- Indeks untuk tabel `bahan_baku`
 --
 ALTER TABLE `bahan_baku`
   ADD PRIMARY KEY (`id_bahan_baku`);
 
 --
--- Indexes for table `detail_produksi`
+-- Indeks untuk tabel `detail_produksi`
 --
 ALTER TABLE `detail_produksi`
   ADD PRIMARY KEY (`id_detail_produksi`),
@@ -153,76 +163,76 @@ ALTER TABLE `detail_produksi`
   ADD KEY `fk_detail_produksi_bahan_baku` (`id_bahan_baku`);
 
 --
--- Indexes for table `migrations`
+-- Indeks untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `produk`
+-- Indeks untuk tabel `produk`
 --
 ALTER TABLE `produk`
   ADD PRIMARY KEY (`id_produk`);
 
 --
--- Indexes for table `produksi`
+-- Indeks untuk tabel `produksi`
 --
 ALTER TABLE `produksi`
   ADD PRIMARY KEY (`id_produksi`),
   ADD KEY `fk_produksi_bahan_baku` (`id_bahan_baku`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `bahan_baku`
+-- AUTO_INCREMENT untuk tabel `bahan_baku`
 --
 ALTER TABLE `bahan_baku`
-  MODIFY `id_bahan_baku` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_bahan_baku` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `detail_produksi`
+-- AUTO_INCREMENT untuk tabel `detail_produksi`
 --
 ALTER TABLE `detail_produksi`
   MODIFY `id_detail_produksi` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `migrations`
+-- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `produk`
+-- AUTO_INCREMENT untuk tabel `produk`
 --
 ALTER TABLE `produk`
   MODIFY `id_produk` int NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `produksi`
+-- AUTO_INCREMENT untuk tabel `produksi`
 --
 ALTER TABLE `produksi`
-  MODIFY `id_produksi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_produksi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
   MODIFY `id_user` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `detail_produksi`
+-- Ketidakleluasaan untuk tabel `detail_produksi`
 --
 ALTER TABLE `detail_produksi`
   ADD CONSTRAINT `fk_detail_produksi_bahan_baku` FOREIGN KEY (`id_bahan_baku`) REFERENCES `bahan_baku` (`id_bahan_baku`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -230,7 +240,7 @@ ALTER TABLE `detail_produksi`
   ADD CONSTRAINT `fk_detail_produksi_produksi` FOREIGN KEY (`id_produksi`) REFERENCES `produksi` (`id_produksi`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `produksi`
+-- Ketidakleluasaan untuk tabel `produksi`
 --
 ALTER TABLE `produksi`
   ADD CONSTRAINT `fk_produksi_bahan_baku` FOREIGN KEY (`id_bahan_baku`) REFERENCES `bahan_baku` (`id_bahan_baku`) ON DELETE CASCADE ON UPDATE CASCADE;
