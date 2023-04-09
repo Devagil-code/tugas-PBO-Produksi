@@ -22,9 +22,21 @@
     <form action="<?=site_url('produksi/update/'.$produksi->id_produksi)?>" method="post" autocomplate="off">
      <input type="hidden" name="_method" value="PUT">
      <div class="form-group">
+    <label>bahan baku*</label>
+    <select name="id_bahan_baku" class="form-control" required>
+        <option value="" hidden></option>
+        <?php foreach ($bahan_baku as $key => $value) : ?>
+         <option value="<?=$value->id_bahan_baku?>" <?=$produksi->id_bahan_baku == $value->id_bahan_baku ? 'selected' : null?>>
+         <?=$value->nama_bahan_baku?>
+        </option>    
+        <?php endforeach;?>     
+    </select>
+     </div>
+
+     <div class="form-group">
       <label>jumlah Produksi*</label>
-      <input type="int" name="jumlah_produksi" value="<?=$produksi->jumlah_produksi?>" class="form-control" required
-       autofocus>
+      <input type="number" name="jumlah_produksi" value="<?=$produksi->jumlah_produksi?>" class="form-control" required
+       >
      </div>
      <div class="form-group">
       <label>tanggal Produksi*</label>

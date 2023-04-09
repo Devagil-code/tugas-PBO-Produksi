@@ -6,9 +6,9 @@
 
 <?= $this->section('content') ?>
 <section class="section">
- <div class="section-header ml-2">
+ <div class="section-header">
   <h1>Produksi</h1>
-  <div class="seaction-header-button">
+  <div class="seaction-header-button  ml-2">
    <a href="<?=site_url('produksi/new')?>" class="btn btn-primary"> Add New</a>
   </div>
  </div>

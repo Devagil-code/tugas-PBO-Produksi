@@ -69,7 +69,14 @@ class Produksi extends ResourcePresenter
      */
     public function edit($id = null)
     {
-        return view('produksi/edit');
+        $produksi = $this->produksi->find($id);
+        if(is_object($produksi)){
+            $data['bahan_baku'] = $this->bahan_baku->findAll();
+            $data['produksi'] = $produksi;
+        return view('produksi/edit', $data);
+        }else{
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
     }
 
     /**
