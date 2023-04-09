@@ -29,12 +29,18 @@ asu<?= $this->extend('layout/default') ?>
       <input type="text" name="deskripsi_bahan_baku" class="form-control" required>
      </div>
      <div class="form-group">
-      <label>Satuan Bahan Baku*</label>
-      <input type="text" name="satuan_bahan_baku" class="form-control" required>
+    <label>Satuan Bahan Baku*</label>
+    <select name="satuan_bahan_baku" class="form-control" required>
+        <option value="">Pilih Satuan</option>
+        <option value="kg">kg</option>
+        <option value="gram">gram</option>
+        <option value="liter">liter</option>
+        <option value="ml">ml</option>
+    </select>
      </div>
      <div class="form-group">
       <label>Stok Bahan Baku*</label>
-      <input type="int" name="stok_bahan_baku" class="form-control" required>
+      <input type="number" name="stok_bahan_baku" class="form-control" required>
      </div>
      <div>
       <button type="submit" class="btn btn-success"><i class="fas fa-paper-plane"> Save</i></button>

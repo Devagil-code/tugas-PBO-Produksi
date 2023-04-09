@@ -1,15 +1,15 @@
 <?= $this->extend('layout/default') ?>
 
 <?= $this->section('title') ?>
-<title>Data Produksi</title>
+<title>Data produk</title>
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
 <section class="section">
  <div class="section-header">
-  <h1>Produksi</h1>
-  <div class="seaction-header-button  ml-2">
-   <a href="<?=site_url('produksi/new')?>" class="btn btn-primary"> Add New</a>
+  <h1>produk</h1>
+  <div class="seaction-header-button ml-2">
+   <a href="<?=site_url('produk/new')?>" class="btn btn-primary"> Add New</a>
   </div>
  </div>
 
@@ -27,32 +27,34 @@
 
   <div class="card">
    <div class="card-header">
-    <h4>Data Produksi</h4>
+    <h4>Data produk</h4>
    </div>
    <div class="text-center card-body table-responsive">
     <table class="table table-striped table-md">
      <thead>
-     <tbody>
+      <tbody>
       <tr>
        <th>No</th>
-       <th>nama bahan baku</th>
-       <th>jumlah produksi</th>
-       <th>tanggal produksi</th>
+       <th>nama produk</th>
+       <th>Deskripsi produk</th>
+       <th>Harga</th>
+       <th>Stok</th>
        <th>Action</th>
       </tr>
-      <?php foreach ($produksi as $key => $value) : ?>
+      <?php foreach ($produk as $key => $value) : ?>
       <tr>
        <td><?=$key + 1 ?></td>
-       <td><?=$value->nama_bahan_baku?></td>
-       <td><?=$value->jumlah_produksi?></td>
-       <td><?=$value->tanggal_produksi?></td>
+       <td><?=$value->nama_produk?></td>
+       <td><?=$value->deskripsi_produk?></td>
+       <td><?=$value->harga_produk?></td>
+       <td><?=$value->stok_produk?></td>
        <td class="text-center" style="width:15%">
-        <a href="<?=site_url('produksi/edit/'.$value->id_produksi)?>" class="btn btn-warning btn-sm"> <i
+        <a href="<?=site_url('produk/edit/'.$value->id_produk)?>" class="btn btn-warning btn-sm"> <i
           class="fas fa-pencil-alt"></i></a>
-        <form action="<?=site_url('produksi/delete/'.$value->id_produksi)?>" method="post" class="d-inline"
+        <form action="<?=site_url('produk/delete/'.$value->id_produk)?>" method="post" class="d-inline"
          onsubmit="return confirm('Yakin Hapus Data?')">
-         <input type="hidden" name="_method" value="DELETE">
-         <button class=" btn btn-danger btn-sm">
+
+         <button href="" class=" btn btn-danger btn-sm">
           <i class="fas fa-trash"></i>
          </button>
         </form>

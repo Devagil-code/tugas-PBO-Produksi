@@ -31,14 +31,14 @@
       <input type="textarea" name="deskripsi_bahan_baku" value="<?=$bahan_baku->deskripsi_bahan_baku?>" class="form-control"
        required>
      </div>
-      <div class="form-group">
+     <div class="form-group">
     <label>Satuan Bahan Baku*</label>
     <select name="satuan_bahan_baku" class="form-control" required>
-      <option value="">Pilih Satuan</option>
-      <option value="kg" <?php if ($bahan_baku->satuan_bahan_baku == 'kg') { echo 'selected'; } ?>>kg</option>
-      <option value="gram" <?php if ($bahan_baku->satuan_bahan_baku == 'gram') { echo 'selected'; } ?>>gram</option>
-      <option value="liter" <?php if ($bahan_baku->satuan_bahan_baku == 'liter') { echo 'selected'; } ?>>liter</option>
-      <option value="mililiter" <?php if ($bahan_baku->satuan_bahan_baku == 'mililiter') { echo 'selected'; } ?>>mililiter</option>
+        <option value="">Pilih Satuan</option>
+        <option value="kg">kg</option>
+        <option value="gram">gram</option>
+        <option value="liter">liter</option>
+        <option value="ml">ml</option>
     </select>
     </div>
      <div class="form-group">

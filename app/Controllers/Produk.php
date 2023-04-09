@@ -3,16 +3,16 @@
 namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourcePresenter;
-use App\Models\BahanbakuModel;
-use App\Models\ProduksiModel;
+// use App\Models\BahanbakuModel;
 
-class Produksi extends ResourcePresenter
+class Produk extends ResourcePresenter
 {
+    // function __construct(){
+    //     $this->produk = new BahanbakuModel();
+    // }
+    protected $modelName = 'App\Models\ProdukModel';
+    // protected $helpers = ['custom'];
     
-    function __construct(){
-        $this->bahan_baku = new BahanbakuModel();
-        $this->produksi = new ProduksiModel();
-    }
     /**
      * Present a view of resource objects
      *
@@ -20,8 +20,8 @@ class Produksi extends ResourcePresenter
      */
     public function index()
     {
-        $data['produksi'] = $this->produksi->getAll();
-        return view('produksi/produksi', $data);
+        $data['produk'] = $this->model->findAll();
+        return view('produk/produk', $data);
     }
 
     /**
@@ -43,8 +43,7 @@ class Produksi extends ResourcePresenter
      */
     public function new()
     {
-        $data['bahan_baku'] = $this->bahan_baku->findAll();
-        return view('produksi/new', $data);
+        return view('produk/new');
     }
 
     /**
@@ -56,8 +55,8 @@ class Produksi extends ResourcePresenter
     public function create()
     {
         $data  = $this->request->getPost();
-        $this->produksi->insert($data);
-        return redirect()->to(site_url('produksi'))->with('success', 'Data berhasil ditambahkan');
+        $this->model->insert($data);
+        return redirect()->to(site_url('produk'))->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -69,11 +68,10 @@ class Produksi extends ResourcePresenter
      */
     public function edit($id = null)
     {
-        $produksi = $this->produksi->find($id);
-        if(is_object($produksi)){
-            $data['bahan_baku'] = $this->bahan_baku->findAll();
-            $data['produksi'] = $produksi;
-        return view('produksi/edit', $data);
+        $produk = $this->model->where('id_produk', $id)->first();
+        if(is_object($produk)){
+            $data['produk'] = $produk;
+        return view('produk/edit', $data);
         }else{
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
@@ -90,8 +88,8 @@ class Produksi extends ResourcePresenter
     public function update($id = null)
     {
         $data = $this->request->getPost();
-        $this->produksi->update($id, $data);
-        return redirect()->to(site_url('produksi'))->with('success', 'Data berhasil diubah');
+        $this->model->update($id, $data);
+        return redirect()->to(site_url('produk'))->with('success', 'Data berhasil diubah');
     }
 
     /**
@@ -115,7 +113,7 @@ class Produksi extends ResourcePresenter
      */
     public function delete($id = null)
     {
-        $this->produksi->delete($id);
-        return redirect()->to(site_url('produksi'))->with('success', 'Data berhasil dihapus');
+        $this->model->delete($id);
+        return redirect()->to(site_url('produk'))->with('success', 'Data berhasil dihapus');
     }
 }

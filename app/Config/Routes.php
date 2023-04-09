@@ -54,7 +54,10 @@ $routes->presenter('bahan_baku', ['filter' => 'isLoggedIn']);
 
 
 // routing ke controller produksi
-$routes->presenter('produksi');
+$routes->presenter('produksi', ['filter' => 'isLoggedIn']);
+
+// routing ke controller produk
+$routes->presenter('produk', ['filter' => 'isLoggedIn']);
 
 
 
