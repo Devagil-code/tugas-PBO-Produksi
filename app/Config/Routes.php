@@ -59,6 +59,9 @@ $routes->presenter('produksi', ['filter' => 'isLoggedIn']);
 // routing ke controller produk
 $routes->presenter('produk', ['filter' => 'isLoggedIn']);
 
+// routing ke controller detailproduksi
+$routes->presenter('detail_produksi', ['filter' => 'isLoggedIn']);
+
 
 
 /*
