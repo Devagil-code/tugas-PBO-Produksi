@@ -89,7 +89,9 @@ class Produksi extends ResourcePresenter
      */
     public function update($id = null)
     {
-        //
+        $data = $this->request->getPost();
+        $this->produksi->update($id, $data);
+        return redirect()->to(site_url('produksi'))->with('success', 'Data berhasil diubah');
     }
 
     /**
