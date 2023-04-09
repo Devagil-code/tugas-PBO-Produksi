@@ -31,7 +31,8 @@
    </div>
    <div class="text-center card-body table-responsive">
     <table class="table table-striped table-md">
-     <tbody>
+     <thead>
+      <tbody>
       <tr>
        <th>No</th>
        <th>nama bahan baku</th>
@@ -60,7 +61,7 @@
        </td>
       </tr>
       <?php endforeach; ?>
-     </tbody>
+      <tbody>
     </table>
    </div>
   </div>

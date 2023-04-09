@@ -6,10 +6,10 @@
 
 <?= $this->section('content') ?>
 <section class="section">
- <div class="section-header">
+ <div class="section-header ml-2">
   <h1>Produksi</h1>
   <div class="seaction-header-button">
-   <a href="<?=site_url('produksi/tambah_produksi')?>" class="btn btn-primary"> Add New</a>
+   <a href="<?=site_url('produksi/new')?>" class="btn btn-primary"> Add New</a>
   </div>
  </div>
 
@@ -31,6 +31,7 @@
    </div>
    <div class="text-center card-body table-responsive">
     <table class="table table-striped table-md">
+     <thead>
      <tbody>
       <tr>
        <th>No</th>
@@ -42,7 +43,7 @@
       <?php foreach ($produksi as $key => $value) : ?>
       <tr>
        <td><?=$key + 1 ?></td>
-       <td><?=$value->id_bahan_baku?></td>
+       <td><?=$value->nama_bahan_baku?></td>
        <td><?=$value->jumlah_produksi?></td>
        <td><?=$value->tanggal_produksi?></td>
        <td class="text-center" style="width:15%">
@@ -58,7 +59,7 @@
        </td>
       </tr>
       <?php endforeach; ?>
-     </tbody>
+      <tbody>
     </table>
    </div>
   </div>

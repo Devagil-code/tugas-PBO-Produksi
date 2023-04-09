@@ -20,7 +20,7 @@ class Produksi extends ResourcePresenter
      */
     public function index()
     {
-        $data['produksi'] = $this->contact->findAll();
+        $data['produksi'] = $this->produksi->getAll();
         return view('produksi/produksi', $data);
     }
 
@@ -43,7 +43,8 @@ class Produksi extends ResourcePresenter
      */
     public function new()
     {
-        return view('produksi/new');
+        $data['bahan_baku'] = $this->bahan_baku->findAll();
+        return view('produksi/new', $data);
     }
 
     /**
@@ -54,7 +55,9 @@ class Produksi extends ResourcePresenter
      */
     public function create()
     {
-        //
+        $data  = $this->request->getPost();
+        $this->produksi->insert($data);
+        return redirect()->to(site_url('produksi'))->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
