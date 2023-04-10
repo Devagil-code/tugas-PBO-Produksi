@@ -114,6 +114,6 @@ class Bahan_baku extends ResourcePresenter
     public function delete($id = null)
     {
         $this->model->delete($id);
-        return redirect()->to(site_url('bahan_baku'))->with('success', 'Data berhasil dihapus');
+        return redirect()->to(site_url('bahan_baku'))->with('danger', 'Data berhasil dihapus');
     }
 }

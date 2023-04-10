@@ -116,6 +116,6 @@ class Produksi extends ResourcePresenter
     public function delete($id = null)
     {
         $this->produksi->delete($id);
-        return redirect()->to(site_url('produksi'))->with('success', 'Data berhasil dihapus');
+        return redirect()->to(site_url('produksi'))->with('danger', 'Data berhasil dihapus');
     }
 }

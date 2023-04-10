@@ -22,6 +22,15 @@
   </div>
  </div>
  <?php endif; ?>
+ <?php if(session()->getFlashdata('danger')) :?>
+ <div class="alert alert-danger alert-dismissible show fade">
+  <div class="alert-body">
+   <button class="close" data-dismiss="alert">x</button>
+   <b>Success !</b>
+   <?=session()->getFlashdata('danger')?>
+  </div>
+ </div>
+ <?php endif; ?>
 
  <div class="section-body">
 
@@ -38,7 +47,7 @@
        <th>nama produk</th>
        <th>jumlah produksi</th>
        <th>bahan baku</th>
-       <th>jumlah bahan baku</th>
+       <th>tanggal produksi</th>
        <th>Action</th>
       </tr>
       <?php foreach ($detail_produksi as $key => $value) : ?>
@@ -47,7 +56,7 @@
        <td><?=$value->nama_produk?></td>
        <td><?=$value->jumlah_produksi?></td>
        <td><?=$value->nama_bahan_baku?></td>
-       <td><?=$value->jumlah_bahan_baku?></td>
+       <td><?=$value->tanggal_produksi?></td>
        <td class="text-center" style="width:15%">
         <!-- <a href="<?=site_url('detail_produksi/edit/'.$value->id_detail_produksi)?>" class="btn btn-warning btn-sm"> <i
           class="fas fa-pencil-alt"></i></a> -->

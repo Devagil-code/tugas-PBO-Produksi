@@ -47,11 +47,15 @@
         <?php endforeach;?>     
     </select>
     </div>
-
      <div class="form-group">
-      <label>Jumlah Bahan Baku*</label>
-      <input type="number" name="jumlah_bahan_baku" class="form-control" required>
-     </div>
+    <label>Tanggal Produksi*</label>
+    <select name="id_produksi" class="form-control" required>
+        <option value="" hidden></option>
+        <?php foreach ($produksi as $key => $value) : ?>
+         <option value="<?=$value->id_produksi?>"><?=$value->tanggal_produksi?></option>    
+        <?php endforeach;?>     
+    </select>
+    </div>
      <div>
       <button type="submit" class="btn btn-success"><i class="fas fa-paper-plane"> Save</i></button>
       <button type="reset" class="btn btn-secondary">reset</button>

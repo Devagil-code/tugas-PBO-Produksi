@@ -62,6 +62,11 @@ $routes->presenter('produk', ['filter' => 'isLoggedIn']);
 // routing ke controller detailproduksi
 $routes->presenter('detail_produksi', ['filter' => 'isLoggedIn']);
 
+// routing ke controller detailproduksi
+$routes->get('laporan-produksi', 'Laporan_produksi::index');
+$routes->post('/laporan_produksi/hapus/(:num)', 'Laporan_produksi::hapus/$1');
+
+
 
 
 /*

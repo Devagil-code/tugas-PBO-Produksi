@@ -22,6 +22,16 @@
   </div>
  </div>
  <?php endif; ?>
+ 
+ <?php if(session()->getFlashdata('danger')) :?>
+ <div class="alert alert-danger alert-dismissible show fade">
+  <div class="alert-body">
+   <button class="close" data-dismiss="alert">x</button>
+   <b>Success !</b>
+   <?=session()->getFlashdata('danger')?>
+  </div>
+ </div>
+ <?php endif; ?>
 
  <div class="section-body">
 

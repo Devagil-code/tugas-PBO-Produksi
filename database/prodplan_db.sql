@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 09 Apr 2023 pada 06.03
+-- Waktu pembuatan: 10 Apr 2023 pada 12.33
 -- Versi server: 8.0.30
 -- Versi PHP: 7.4.12
 
@@ -35,16 +35,6 @@ CREATE TABLE `bahan_baku` (
   `stok_bahan_baku` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Dumping data untuk tabel `bahan_baku`
---
-
-INSERT INTO `bahan_baku` (`id_bahan_baku`, `nama_bahan_baku`, `deskripsi_bahan_baku`, `satuan_bahan_baku`, `stok_bahan_baku`) VALUES
-(1, 'Tepung terigu', 'Tepung terigu protein tinggi', 'Kg', 100),
-(2, 'Gula pasir', 'Gula pasir halus', 'Kg', 50),
-(3, 'Tepung Tapioka', 'Tepung Berkarbohidrat Tinggi', 'kg', 56),
-(6, 'pisang kepok', 'pisang kepok lampung', 'Kg', 245);
-
 -- --------------------------------------------------------
 
 --
@@ -55,8 +45,7 @@ CREATE TABLE `detail_produksi` (
   `id_detail_produksi` int NOT NULL,
   `id_produk` int NOT NULL,
   `id_produksi` int NOT NULL,
-  `id_bahan_baku` int NOT NULL,
-  `jumlah_bahan_baku` int NOT NULL
+  `id_bahan_baku` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -80,7 +69,7 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`, `batch`) VALUES
-(1, '2023-04-07-063139', 'App\\Database\\Migrations\\CreateUsers', 'default', 'App', 1680851846, 1);
+(1, '2023-04-07-063139', 'App\\Database\\Migrations\\CreateUsers', 'default', 'App', 1681117697, 1);
 
 -- --------------------------------------------------------
 
@@ -109,15 +98,6 @@ CREATE TABLE `produksi` (
   `tanggal_produksi` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Dumping data untuk tabel `produksi`
---
-
-INSERT INTO `produksi` (`id_produksi`, `id_bahan_baku`, `jumlah_produksi`, `tanggal_produksi`) VALUES
-(4, 1, 670, '2023-04-18'),
-(5, 2, 790, '2023-04-24'),
-(6, 3, 556, '2023-04-29');
-
 -- --------------------------------------------------------
 
 --
@@ -139,9 +119,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `name_user`, `email_user`, `password_user`, `info_user`, `created_at`, `updated_at`) VALUES
-(1, 'Agil Pamungkas', 'devagil@gmail.com', '$2y$10$Otgu0ZQBT7ZdYroPk1Y8ourKB22Pb8dyDrarXcREJwgClAVaN74fq', NULL, NULL, NULL),
-(2, 'Repa Okari', 'repa@gmail.com', '$2y$10$4gPk.1qYncB2924qo5JmdOm2pCnL2XkrnOCXSSVRoF2y2gB2ISkFO', NULL, NULL, NULL),
-(3, 'Roby Fadli', 'roby@gmail.com', '$2y$10$C1t2.OHrV5hvsN/lSgKgAeLa4RZecXDgIZscIP05rftGeFDCjuxr.', NULL, NULL, NULL);
+(1, 'Agil Pamungkas', 'devagil@gmail.com', '$2y$10$yZd6pYZQzjM/.2i1eKpzF.HN29NFSJPJPNRLniB.lL9rsPAskIIWW', NULL, NULL, NULL),
+(2, 'Repa Okari', 'repa@gmail.com', '$2y$10$u.CTCKAEqARhtUchbZHJk.GUN4ljGC6ML15aw2owhXkwWA1sKkXrS', NULL, NULL, NULL),
+(3, 'Roby Fadli', 'roby@gmail.com', '$2y$10$wndaf3AQhw56RnocLkX4GeDWIFdeWwcNCUMx2xHhhixIcKsJbP3vC', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -195,13 +175,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `bahan_baku`
 --
 ALTER TABLE `bahan_baku`
-  MODIFY `id_bahan_baku` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_bahan_baku` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `detail_produksi`
 --
 ALTER TABLE `detail_produksi`
-  MODIFY `id_detail_produksi` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_detail_produksi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
@@ -213,13 +193,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_produk` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `produksi`
 --
 ALTER TABLE `produksi`
-  MODIFY `id_produksi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_produksi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
