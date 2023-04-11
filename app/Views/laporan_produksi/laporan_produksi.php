@@ -36,7 +36,9 @@
        <th>No</th>
        <th>tanggal produksi</th>
        <th>nama produk</th>
-       <th>nama bahan baku</th>
+       <th>deskripsi produk</th>
+       <th>bahan baku</th>
+       <th>deskripsi bahan baku</th>
        <th>jumlah produksi</th>
        <th>Action</th>
       </tr>
@@ -45,17 +47,19 @@
         <td><?= $no++; ?></td>
         <td><?= $row->tanggal_produksi; ?></td>
         <td><?= $row->nama_produk; ?></td>
+        <td><?= $row->deskripsi_produk; ?></td>
         <td><?= $row->nama_bahan_baku; ?></td>
+        <td><?= $row->deskripsi_bahan_baku; ?></td>
         <td><?= $row->jumlah_produksi; ?></td>
         <td class="text-center" style="width:15%">
         <form action="<?= site_url('laporan_produksi/hapus/'.$row->id_produksi)?>" method="post" class="d-inline"
         onsubmit="return confirm('Yakin Hapus Data?')">
             <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
         </form>
-    </td>
-    </tr>
+       </td>
+      </tr>
             <?php endforeach; ?>
-      <tbody>
+     <tbody>
     </table>
    </div>
   </div>
