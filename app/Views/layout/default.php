@@ -19,6 +19,7 @@
  <!-- Template CSS -->
  <link rel="stylesheet" href="<?=base_url()?>/template/assets/css/style.css">
  <link rel="stylesheet" href="<?=base_url()?>/template/assets/css/components.css">
+ <link rel="shortcut icon" type="image/png" href="favicon.png">
 </head>
 
 <body>

@@ -7,6 +7,7 @@ use CodeIgniter\Session\Handlers\FileHandler;
 
 class App extends BaseConfig
 {
+    
     /**
      * --------------------------------------------------------------------------
      * Base Site URL
@@ -17,6 +18,8 @@ class App extends BaseConfig
      *
      *    http://example.com/
      */
+    public $defaultFavicon = 'favicon.png';
+
     public string $baseURL = 'http://localhost:8080/';
 
     /**

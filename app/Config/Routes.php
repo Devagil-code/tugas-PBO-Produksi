@@ -66,6 +66,15 @@ $routes->presenter('detail_produksi', ['filter' => 'isLoggedIn']);
 $routes->get('laporan-produksi', 'Laporan_produksi::index');
 $routes->post('/laporan_produksi/hapus/(:num)', 'Laporan_produksi::hapus/$1');
 
+// Routing untuk cetak laporan
+$routes->get('laporan_produksi/cetak', 'Laporan_produksi::cetak');
+
+// Routing untuk ekspor laporan
+$routes->get('laporan_produksi/ekspor', 'Laporan_produksi::ekspor');
+
+// Routing untuk laporan bulanan
+$routes->get('laporan_produksi/bulanan/(:num)/(:num)', 'Laporan_produksi::bulanan/$1/$2');
+
 
 
 
