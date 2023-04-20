@@ -38,30 +38,33 @@
    <div class="card-header">
     <h4>Data detail Produksi</h4>
    </div>
-   <div class="text-center card-body table-responsive">
-    <table class="table table-striped table-md">
+   <div class="card-body table-responsive">
+    <table class="table table-striped table-md" id="table1">
      <thead>
-     <tbody>
       <tr>
        <th>No</th>
        <th>nama produk</th>
        <th>jumlah produksi</th>
+       <th>Satuan</th>
        <th>bahan baku</th>
        <th>tanggal produksi</th>
        <th>Action</th>
       </tr>
+     </thead>
+     <tbody>
       <?php foreach ($detail_produksi as $key => $value) : ?>
       <tr>
        <td><?=$key + 1 ?></td>
        <td><?=$value->nama_produk?></td>
        <td><?=$value->jumlah_produksi?></td>
+       <td><?=$value->satuan_bahan_baku?></td>
        <td><?=$value->nama_bahan_baku?></td>
        <td><?=$value->tanggal_produksi?></td>
-       <td class="text-center" style="width:15%">
+       <td>
         <!-- <a href="<?=site_url('detail_produksi/edit/'.$value->id_detail_produksi)?>" class="btn btn-warning btn-sm"> <i
           class="fas fa-pencil-alt"></i></a> -->
-        <form action="<?=site_url('detail_produksi/delete/'.$value->id_detail_produksi)?>" method="post" class="d-inline"
-         onsubmit="return confirm('Yakin Hapus Data?')">
+        <form action="<?=site_url('detail_produksi/delete/'.$value->id_detail_produksi)?>" method="post"
+         class="d-inline" onsubmit="return confirm('Yakin Hapus Data?')">
          <input type="hidden" name="_method" value="DELETE">
          <button class=" btn btn-danger btn-sm">
           <i class="fas fa-trash"></i>
@@ -70,7 +73,7 @@
        </td>
       </tr>
       <?php endforeach; ?>
-      <tbody>
+     </tbody>
     </table>
    </div>
   </div>

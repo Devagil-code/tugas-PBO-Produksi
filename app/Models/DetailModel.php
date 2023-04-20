@@ -13,7 +13,7 @@ class DetailModel extends Model
 
     function getAll(){
         $builder = $this->db->table('detail_produksi');
-        $builder->select('detail_produksi.*, produk.nama_produk, produksi.jumlah_produksi, bahan_baku.nama_bahan_baku, produksi.tanggal_produksi');
+        $builder->select('detail_produksi.*, produk.nama_produk, produksi.jumlah_produksi, bahan_baku.nama_bahan_baku, bahan_baku.satuan_bahan_baku, produksi.tanggal_produksi');
         $builder->join('bahan_baku', 'bahan_baku.id_bahan_baku = detail_produksi.id_bahan_baku');
         $builder->join('produksi', 'produksi.id_produksi = detail_produksi.id_produksi');
         $builder->join('produk', 'produk.id_produk = detail_produksi.id_produk');

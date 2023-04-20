@@ -37,10 +37,9 @@
    <div class="card-header">
     <h4>Data Produksi</h4>
    </div>
-   <div class="text-center card-body table-responsive">
-    <table class="table table-striped table-md">
+   <div class="card-body table-responsive">
+    <table class="table table-striped table-md" id="table1">
      <thead>
-     <tbody>
       <tr>
        <th>No</th>
        <th>nama bahan baku</th>
@@ -48,13 +47,15 @@
        <th>tanggal produksi</th>
        <th>Action</th>
       </tr>
+     </thead>
+     <tbody>
       <?php foreach ($produksi as $key => $value) : ?>
       <tr>
        <td><?=$key + 1 ?></td>
        <td><?=$value->nama_bahan_baku?></td>
        <td><?=$value->jumlah_produksi?></td>
        <td><?=$value->tanggal_produksi?></td>
-       <td class="text-center" style="width:15%">
+       <td>
         <a href="<?=site_url('produksi/edit/'.$value->id_produksi)?>" class="btn btn-warning btn-sm"> <i
           class="fas fa-pencil-alt"></i></a>
         <form action="<?=site_url('produksi/delete/'.$value->id_produksi)?>" method="post" class="d-inline"
@@ -67,7 +68,7 @@
        </td>
       </tr>
       <?php endforeach; ?>
-      <tbody>
+     </tbody>
     </table>
    </div>
   </div>

@@ -23,15 +23,15 @@
   </div>
  </div>
  <?php endif; ?>
+
  <div class="section-body">
   <div class="card">
    <div class="card-header">
     <h4>Data Laporan</h4>
    </div>
-   <div class="text-center card-body table-responsive">
-    <table class="table table-striped table-md">
+   <div class="card-body table-responsive">
+    <table class="table table-striped table-md" id="table1">
      <thead>
-     <tbody>
       <tr>
        <th>No</th>
        <th>tanggal produksi</th>
@@ -42,6 +42,8 @@
        <th>jumlah produksi</th>
        <th>Action</th>
       </tr>
+     </thead>
+     <tbody>
       <?php $no = 1; foreach($laporan as $row): ?>
       <tr>
        <td><?= $no++; ?></td>
@@ -51,16 +53,19 @@
        <td><?= $row->nama_bahan_baku; ?></td>
        <td><?= $row->deskripsi_bahan_baku; ?></td>
        <td><?= $row->jumlah_produksi; ?></td>
-       <td class="text-center" style="width:15%">
+
+       <td>
         <form action="<?= site_url('laporan_produksi/hapus/'.$row->id_produksi)?>" method="post" class="d-inline"
          onsubmit="return confirm('Yakin Hapus Data?')">
-         <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+         <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i>
+         </button>
         </form>
        </td>
       </tr>
       <?php endforeach; ?>
-     <tbody>
+     </tbody>
     </table>
+
    </div>
   </div>
  </div>

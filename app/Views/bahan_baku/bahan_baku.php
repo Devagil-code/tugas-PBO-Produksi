@@ -22,7 +22,7 @@
   </div>
  </div>
  <?php endif; ?>
- 
+
  <?php if(session()->getFlashdata('danger')) :?>
  <div class="alert alert-danger alert-dismissible show fade">
   <div class="alert-body">
@@ -39,10 +39,9 @@
    <div class="card-header">
     <h4>Data bahan baku</h4>
    </div>
-   <div class="text-center card-body table-responsive">
-    <table class="table table-striped table-md">
+   <div class="card-body table-responsive">
+    <table class="table table-striped table-md" id="table1">
      <thead>
-      <tbody>
       <tr>
        <th>No</th>
        <th>nama bahan baku</th>
@@ -51,6 +50,8 @@
        <th>Stok</th>
        <th>Action</th>
       </tr>
+     </thead>
+     <tbody>
       <?php foreach ($bahan_baku as $key => $value) : ?>
       <tr>
        <td><?=$key + 1 ?></td>
@@ -58,7 +59,7 @@
        <td><?=$value->deskripsi_bahan_baku?></td>
        <td><?=$value->satuan_bahan_baku?></td>
        <td><?=$value->stok_bahan_baku?></td>
-       <td class="text-center" style="width:15%">
+       <td>
         <a href="<?=site_url('bahan_baku/edit/'.$value->id_bahan_baku)?>" class="btn btn-warning btn-sm"> <i
           class="fas fa-pencil-alt"></i></a>
         <form action="<?=site_url('bahan_baku/delete/'.$value->id_bahan_baku)?>" method="post" class="d-inline"
@@ -71,7 +72,7 @@
        </td>
       </tr>
       <?php endforeach; ?>
-      <tbody>
+     </tbody>
     </table>
    </div>
   </div>

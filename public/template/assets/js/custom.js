@@ -6,3 +6,8 @@
  */
 
 "use strict";
+
+//datatabel
+$(document).ready(function() {
+    $('#table1').DataTable();
+});

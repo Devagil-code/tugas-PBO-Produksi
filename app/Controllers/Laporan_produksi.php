@@ -49,7 +49,7 @@ class Laporan_produksi extends Controller
         $query = $builder->get();
         $data['laporan'] = $query->getResult();
     
-        return  view('laporan_produksi/cetak');
+        return  view('laporan_produksi/cetak', $data);
     }
     
     
