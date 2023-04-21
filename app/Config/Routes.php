@@ -73,7 +73,7 @@ $routes->get('laporan_produksi/cetak', 'Laporan_produksi::cetak');
 $routes->get('laporan_produksi/ekspor', 'Laporan_produksi::ekspor');
 
 // Routing untuk laporan bulanan
-$routes->get('laporan_produksi/bulanan/(:num)/(:num)', 'Laporan_produksi::bulanan/$1/$2');
+$routes->get('laporan_produksi/cetak', 'Laporan_produksi::bulanan');
 
 
 

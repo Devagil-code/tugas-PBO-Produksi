@@ -2,11 +2,12 @@
 
 namespace App\Controllers;
 
-use CodeIgniter\Controller;
+use CodeIgniter\RESTful\ResourcePresenter;
+// use App\Models\BahanbakuModel;
 
-class Laporan_produksi extends Controller
+class Laporan_produksi extends ResourcePresenter
 {
-    protected $helpers = ['custom'];
+    protected $modelName = 'App\Models\LaporanModel';
 
     public function index()
     {
@@ -49,8 +50,10 @@ class Laporan_produksi extends Controller
         $query = $builder->get();
         $data['laporan'] = $query->getResult();
     
-        return  view('laporan_produksi/cetak', $data);
+        // Menampilkan view cetak dengan data yang sudah diambil
+        return view('laporan_produksi/cetak', $data);
     }
+    
     
     
     
@@ -107,16 +110,28 @@ class Laporan_produksi extends Controller
         return $this->response->download($filename, NULL);
     }
     
-
-    public function laporan_bulanan()
+    public function bulanan()
     {
         $db = \Config\Database::connect();
     
-        // Mengambil data laporan produksi bulanan
-        // ...
+        // Mengambil data dari tabel produksi, detail_produksi, produk, dan bahan_baku
+        $builder = $db->table('produksi');
+        $builder->select('produksi.id_produksi, produksi.jumlah_produksi, produksi.tanggal_produksi, produk.nama_produk, produk.deskripsi_produk, bahan_baku.nama_bahan_baku, bahan_baku.deskripsi_bahan_baku');
+        $builder->join('detail_produksi', 'detail_produksi.id_produksi = produksi.id_produksi');
+        $builder->join('produk', 'produk.id_produk = detail_produksi.id_produk');
+        $builder->join('bahan_baku', 'bahan_baku.id_bahan_baku = detail_produksi.id_bahan_baku');
+        $query = $builder->get();
+        $data['laporan'] = $query->getResult();
     
-        // Menampilkan view laporan bulanan dengan data yang sudah diambil
-        return view('laporan_produksi/laporan_bulanan');
+        $tanggal = date('Y-m'); // define the current year and month
+        $laporan = $this->model->get_laporan_bulanan($tanggal);
+        $data = [
+        'laporan' => $laporan,
+        'tanggal' => $tanggal,
+        ];
+
+        // Menampilkan view cetak dengan data yang sudah diambil
+        return view('laporan_produksi/bulanan', $data);
     }
 
 }

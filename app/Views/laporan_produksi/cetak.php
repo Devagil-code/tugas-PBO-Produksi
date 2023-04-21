@@ -1,73 +1,97 @@
-<?php
+<?= $this->extend('layout/default') ?>
+<?= $this->section('title') ?>
+<title>Data Laporan</title>
+<?= $this->endSection() ?>
+<?= $this->section('content') ?>
 
-use CodeIgniter\I18n\Time;
+<style>
+table {
+ border-collapse: collapse;
+ width: 80%;
+ margin: 0 auto;
+}
 
-// Get current date and time
-$now = Time::now()->toLocalizedString('d MMMM yyyy, HH:mm');
+th {
+ text-align: center;
+ border: 1px solid black;
+ padding: 8px;
+ background-color: #3498DB;
+ color: white;
+}
 
-// Set data untuk header PDF
-$headerData = [
-    'logo' => '/assets/images/logo.png',
-    'nama_pt' => 'Nama PT Anda',
-    'alamat_pt' => 'Alamat PT Anda',
-    'tanggal_cetak' => $now
-];
+td {
+ text-align: center;
+ border: 1px solid black;
+ padding: 2px;
+}
 
-// Set data laporan dari controller
-$laporan = $laporan ?? [];
+.card {
+ width: 100%;
+ margin: 0 auto;
+ padding: 20px;
+ border: 1px solid #ccc;
+ box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+ text-align: center;
+}
 
-?>
+.caption {
+ font-size: 1.5rem;
+ font-weight: bold;
+ margin-bottom: 10px;
+}
 
-<!DOCTYPE html>
-<html lang="en">
+.print-btn {
+ background-color: #3498DB;
+ color: white;
+ border: none;
+ padding: 10px 20px;
+ font-size: 1rem;
+ font-weight: bold;
+ border-radius: 5px;
+ cursor: pointer;
+ margin-top: 20px;
+}
 
-<head>
- <meta charset="UTF-8">
- <title>Laporan Produksi</title>
-</head>
+.print-btn:hover {
+ background-color: #2980B9;
+}
 
-<body>
- <div style="text-align: center; margin-bottom: 20px;">
-  <img src="<?= $headerData['logo']; ?>" alt="Logo PT">
-  <h1 style="margin: 0;"><?= $headerData['nama_pt']; ?></h1>
-  <p style="margin: 0;"><?= $headerData['alamat_pt']; ?></p>
-  <p style="margin: 0;">Tanggal Cetak: <?= $headerData['tanggal_cetak']; ?></p>
-  <hr>
- </div>
- <table border="1" cellspacing="0" cellpadding="5" style="width: 100%; border-collapse: collapse;">
+@media print {
+ .print-btn {
+  display: none;
+ }
+}
+</style>
+
+<div class="card">
+ <div class="caption">PT.Berkah Bin Halal</div>
+ <div class="caption">Jl. Gatot Subroto No. 46, Kecamatan Tadika</div>
+ <table>
   <thead>
    <tr>
     <th>No</th>
-    <th>ID Produksi</th>
+    <th>Jumlah Produksi</th>
     <th>Tanggal Produksi</th>
     <th>Nama Produk</th>
     <th>Deskripsi Produk</th>
-    <th>Jumlah Produksi</th>
     <th>Nama Bahan Baku</th>
     <th>Deskripsi Bahan Baku</th>
    </tr>
   </thead>
   <tbody>
-   <?php if (count($laporan) > 0) : ?>
-   <?php foreach ($laporan as $index => $item) : ?>
+   <?php foreach ($laporan as $data) : ?>
    <tr>
-    <td><?= $index + 1; ?></td>
-    <td><?= $item->id_produksi; ?></td>
-    <td><?= $item->tanggal_produksi; ?></td>
-    <td><?= $item->nama_produk; ?></td>
-    <td><?= $item->deskripsi_produk; ?></td>
-    <td><?= $item->jumlah_produksi; ?></td>
-    <td><?= $item->nama_bahan_baku; ?></td>
-    <td><?= $item->deskripsi_bahan_baku; ?></td>
+    <td><?= $data->id_produksi ?></td>
+    <td><?= $data->jumlah_produksi ?></td>
+    <td><?= $data->tanggal_produksi ?></td>
+    <td><?= $data->nama_produk ?></td>
+    <td><?= $data->deskripsi_produk ?></td>
+    <td><?= $data->nama_bahan_baku ?></td>
+    <td><?= $data->deskripsi_bahan_baku ?></td>
    </tr>
    <?php endforeach; ?>
-   <?php else : ?>
-   <tr>
-    <td colspan="8">Data tidak tersedia.</td>
-   </tr>
-   <?php endif; ?>
   </tbody>
  </table>
-</body>
-
-</html>
+ <button class="print-btn" onclick="window.print()"><i class="fas fa-print"></i> Print</button>
+</div>
+</section>
