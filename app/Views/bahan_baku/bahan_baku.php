@@ -60,11 +60,6 @@
        <td><?=$value->deskripsi_bahan_baku?></td>
        <td><?=$value->satuan_bahan_baku?></td>
        <td><?=$value->stok_bahan_baku?></td>
-       <!-- <td>
-        <?php if($value->gambar_bahan_baku != null) { ?>
-          <img src="<?=base_url('uploads/bahan_baku/' .$value->gambar_bahan_baku)?>" style="width:40px">
-        <?php } ?>
-      </td> -->
        <td>
         <a href="<?=site_url('bahan_baku/edit/'.$value->id_bahan_baku)?>" class="btn btn-warning btn-sm"> <i
           class="fas fa-pencil-alt"></i></a>
