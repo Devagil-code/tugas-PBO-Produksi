@@ -19,7 +19,7 @@
     <h4>Update Data produk</h4>
    </div>
    <div class="card-body col-md-5">
-    <form action="<?=site_url('produk/update/'.$produk->id_produk)?>" method="post" autocomplate="off">
+    <form action="<?=site_url('produk/update/'.$produk->id_produk)?>" method="post" autocomplete="off" enctype="multipart/form-data">
      <input type="hidden" name="_method" value="PUT">
      <div class="form-group">
       <label>Nama produk*</label>
@@ -38,6 +38,10 @@
      <div class="form-group">
       <label>Stok produk*</label>
       <input type="number" name="stok_produk" value="<?=$produk->stok_produk?>" class="form-control" required>
+     </div>
+     <div class="form-group">
+      <label>Gambar*</label>
+      <input type="file" name="gambar" value="<?=$produk->gambar?>" class="form-control-file" accept="image/*">
      </div>
      <div>
       <button type="submit" class="btn btn-success"><i class="fas fa-paper-plane"> Save</i></button>

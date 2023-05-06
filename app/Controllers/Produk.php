@@ -55,6 +55,37 @@ class Produk extends ResourcePresenter
     public function create()
     {
         $data  = $this->request->getPost();
+        $gambar = $this->request->getFile('gambar');   
+        if ($gambar && $gambar->isValid() && !$gambar->hasMoved()) {
+            // Validasi format gambar
+            $formatGambar = ['jpg', 'jpeg', 'png', 'gif'];
+            if (!in_array($gambar->getExtension(), $formatGambar)) {
+                return redirect()->back()->with('danger', 'Format gambar tidak valid. Harap unggah gambar dengan format JPG, JPEG, PNG, atau GIF.');
+            }
+
+            // Validasi ukuran file
+            $ukuranFile = $gambar->getSize();
+            $ukuranMax = 2048 * 1024; // 2MB
+            if ($ukuranFile > $ukuranMax) {
+                return redirect()->back()->with('danger', 'Ukuran gambar terlalu besar. Harap unggah gambar dengan ukuran maksimum 2MB.');
+            }
+
+            // Mendapatkan nama file
+            $namaFile = $gambar->getRandomName();
+
+            // Memindahkan file ke direktori penyimpanan
+            $gambar->move(ROOTPATH . 'public/template/assets/img/produk/', $namaFile);
+
+            // Menyimpan path gambar ke dalam variabel $pathGambar
+            $pathGambar = './template/assets/img/produk/' . $namaFile;
+
+            // Menyimpan path gambar ke dalam kolom 'gambar' dalam tabel produk
+            $data['gambar'] = $pathGambar;
+        } else {
+            return redirect()->back()->with('danger', 'Gambar tidak valid atau sudah dipindahkan.');
+        }
+
+        // Simpan data produk ke database
         $this->model->insert($data);
         return redirect()->to(site_url('produk'))->with('success', 'Data berhasil ditambahkan');
     }
@@ -88,6 +119,36 @@ class Produk extends ResourcePresenter
     public function update($id = null)
     {
         $data = $this->request->getPost();
+        $gambar = $this->request->getFile('gambar');   
+        if ($gambar && $gambar->isValid() && !$gambar->hasMoved()) {
+            // Validasi format gambar
+            $formatGambar = ['jpg', 'jpeg', 'png', 'gif'];
+            if (!in_array($gambar->getExtension(), $formatGambar)) {
+                return redirect()->back()->with('danger', 'Format gambar tidak valid. Harap unggah gambar dengan format JPG, JPEG, PNG, atau GIF.');
+            }
+
+            // Validasi ukuran file
+            $ukuranFile = $gambar->getSize();
+            $ukuranMax = 2048 * 1024; // 2MB
+            if ($ukuranFile > $ukuranMax) {
+                return redirect()->back()->with('danger', 'Ukuran gambar terlalu besar. Harap unggah gambar dengan ukuran maksimum 2MB.');
+            }
+
+            // Mendapatkan nama file
+            $namaFile = $gambar->getRandomName();
+
+            // Memindahkan file ke direktori penyimpanan
+            $gambar->move(ROOTPATH . 'public/template/assets/img/produk/', $namaFile);
+
+            // Menyimpan path gambar ke dalam variabel $pathGambar
+            $pathGambar = './template/assets/img/produk/' . $namaFile;
+
+            // Menyimpan path gambar ke dalam kolom 'gambar' dalam tabel produk
+            $data['gambar'] = $pathGambar;
+        } else {
+            return redirect()->back()->with('danger', 'Gambar tidak valid atau sudah dipindahkan.');
+        }
+
         $this->model->update($id, $data);
         return redirect()->to(site_url('produk'))->with('success', 'Data berhasil diubah');
     }

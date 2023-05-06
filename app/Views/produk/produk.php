@@ -48,6 +48,7 @@
        <th>Deskripsi produk</th>
        <th>Harga</th>
        <th>Stok</th>
+       <th>Gambar</th>
        <th>Action</th>
       </tr>
      </thead>
@@ -59,6 +60,12 @@
        <td><?=$value->deskripsi_produk?></td>
        <td><?=$value->harga_produk?></td>
        <td><?=$value->stok_produk?></td>
+       <td>
+        <?php if (!empty($value->gambar)) { ?>
+          <img src="<?= base_url($value->gambar) ?>" style="width:70px; height:70px;">
+        <?php } ?>
+        </td>
+
        <td>
         <a href="<?=site_url('produk/edit/'.$value->id_produk)?>" class="btn btn-warning btn-sm"> <i
           class="fas fa-pencil-alt"></i></a>

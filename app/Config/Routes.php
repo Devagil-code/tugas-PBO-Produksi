@@ -44,6 +44,7 @@ $routes->setAutoRoute(true);
 
 $routes->presenter('bahan_baku', ['filter' => 'isLoggedIn']);
 
+
 // routing ke controller bahan_baku
 // $routes->get('bahan_baku', 'Bahan_baku::index');
 // $routes->get('bahan_baku/tambah_bahan_baku', 'Bahan_baku::tambah_bahan_baku');

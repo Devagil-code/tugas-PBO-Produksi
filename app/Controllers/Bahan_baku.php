@@ -18,12 +18,15 @@ class Bahan_baku extends ResourcePresenter
      *
      * @return mixed
      */
+    
     public function index()
     {
         $data['bahan_baku'] = $this->model->findAll();
         return view('bahan_baku/bahan_baku', $data);
     }
 
+
+    
     /**
      * Present a view to present a specific resource object
      *
@@ -45,7 +48,10 @@ class Bahan_baku extends ResourcePresenter
     {
         return view('bahan_baku/new');
     }
-
+/**
+ * 
+ * 
+ */
     /**
      * Process the creation/insertion of a new resource object.
      * This should be a POST.
