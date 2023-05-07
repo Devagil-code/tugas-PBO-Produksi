@@ -10,14 +10,22 @@ use App\Models\DetailModel;
 
 class Detail_produksi extends ResourcePresenter
 {
-    
-    function __construct(){
+    protected $bahan_baku;
+    protected $produksi;
+    protected $produk;
+    protected $detail_produksi;
+
+    public function initController(\CodeIgniter\HTTP\RequestInterface $request, \CodeIgniter\HTTP\ResponseInterface $response, \Psr\Log\LoggerInterface $logger)
+    {
+        parent::initController($request, $response, $logger);
         $this->bahan_baku = new BahanbakuModel();
         $this->produksi = new ProduksiModel();
         $this->produk = new ProdukModel();
         $this->detail_produksi = new DetailModel();
-
     }
+    
+    
+
     /**
      * Present a view of resource objects
      *
@@ -38,7 +46,7 @@ class Detail_produksi extends ResourcePresenter
      */
     public function show($id = null)
     {
-        //
+        // Implementasikan logika untuk menampilkan objek sumber daya tertentu di sini
     }
 
     /**
@@ -62,7 +70,7 @@ class Detail_produksi extends ResourcePresenter
      */
     public function create()
     {
-        $data  = $this->request->getPost();
+        $data = $this->request->getPost();
         $this->detail_produksi->insert($data);
         return redirect()->to(site_url('detail_produksi'))->with('success', 'Data berhasil ditambahkan');
     }
@@ -80,8 +88,8 @@ class Detail_produksi extends ResourcePresenter
         // if(is_object($produksi)){
         //     $data['bahan_baku'] = $this->bahan_baku->findAll();
         //     $data['produksi'] = $produksi;
-        // return view('produksi/edit', $data);
-        // }else{
+        //     return view('produksi/edit', $data);
+        // } else {
         //     throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         // }
     }
@@ -97,10 +105,8 @@ class Detail_produksi extends ResourcePresenter
     public function update($id = null)
     {
         // $data = $this->request->getPost();
-        // $this->produksi->update($id, $data);
-        // return redirect()->to(site_url('produksi'))->with('success', 'Data berhasil diubah');
+        // $this->produksi->update($id, $data
     }
-
     /**
      * Present a view to confirm the deletion of a specific resource object
      *
@@ -110,7 +116,7 @@ class Detail_produksi extends ResourcePresenter
      */
     public function remove($id = null)
     {
-        //
+        // Implementasikan logika untuk menampilkan konfirmasi penghapusan objek sumber daya tertentu di sini
     }
 
     /**

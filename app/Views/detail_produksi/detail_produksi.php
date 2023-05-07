@@ -44,6 +44,7 @@
       <tr>
        <th>No</th>
        <th>nama produk</th>
+       <th>gambar</th>
        <th>jumlah produksi</th>
        <th>Satuan</th>
        <th>bahan baku</th>
@@ -54,8 +55,12 @@
      <tbody>
       <?php foreach ($detail_produksi as $key => $value) : ?>
       <tr>
-       <td><?=$key + 1 ?></td>
        <td><?=$value->nama_produk?></td>
+       <td><?=$key + 1 ?></td>
+       <?php if (!empty($value->gambar)) { ?>
+       <img src="<?= base_url($value->gambar) ?>" style="width:70px; height:70px;">
+       <?php } ?>
+       </td>
        <td><?=$value->jumlah_produksi?></td>
        <td><?=$value->satuan_bahan_baku?></td>
        <td><?=$value->nama_bahan_baku?></td>
