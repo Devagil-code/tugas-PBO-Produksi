@@ -26,7 +26,7 @@
      <div class="p-4 m-3">
       <img src="<?=base_url()?>/template/assets/img/unsplash/unipi.png" alt="logo" width="80"
        class="shadow-light rounded-circle mb-5 mt-2">
-      <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold">PRODPLAN</span></h4>
+      <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold">PRODLAP</span></h4>
       <p class="text-muted">Aplikasi ini guna memenuhi tugas PBO yang diberikan</p>
 
       <?php if(session()->getFlashdata('error')) :?>

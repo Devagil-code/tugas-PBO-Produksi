@@ -30,51 +30,36 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 
-$routes->get('create-db', function(){
-    $forge = \Config\Database::forge();
-    if ($forge->createDatabase('prodplan_db')) {
-        echo 'Database created!';
-    }
-});
+// $routes->get('create-db', function(){
+//     $forge = \Config\Database::forge();
+//     if ($forge->createDatabase('prodlap')) {
+//         echo 'Database created!';
+//     }
+// });
 
 $routes->get('login', 'Auth::login');
 // $routes->get('/', 'Home::index');
 $routes->addRedirect('/', 'home');
 $routes->setAutoRoute(true);
 
+$routes->presenter('pesanan_produk', ['filter' => 'isLoggedIn']);
+
+
+// routing ke controller bahanbaku
 $routes->presenter('bahan_baku', ['filter' => 'isLoggedIn']);
 
-
-// routing ke controller bahan_baku
-// $routes->get('bahan_baku', 'Bahan_baku::index');
-// $routes->get('bahan_baku/tambah_bahan_baku', 'Bahan_baku::tambah_bahan_baku');
-// $routes->post('bahan_baku', 'Bahan_baku::tambah');
-// $routes->get('bahan_baku/edit/(:num)', 'Bahan_baku::edit/$1');
-// $routes->put('bahan_baku/(:any)', 'Bahan_baku::update/$1');
-// $routes->delete('bahan_baku/(:segment)', 'Bahan_baku::delete/$1');
-
+// routing ke controller pemillihan bahan baku
+$routes->presenter('pemilihan_bahan_baku', ['filter' => 'isLoggedIn']);
 
 // routing ke controller produksi
 $routes->presenter('produksi', ['filter' => 'isLoggedIn']);
 
-// routing ke controller produk
-$routes->presenter('produk', ['filter' => 'isLoggedIn']);
+// routing ke controller qc tes
+$routes->presenter('qc_tes', ['filter' => 'isLoggedIn']);
 
-// routing ke controller detailproduksi
-$routes->presenter('detail_produksi', ['filter' => 'isLoggedIn']);
+// routing ke controller packing
+$routes->presenter('packing', ['filter' => 'isLoggedIn']);
 
-// routing ke controller detailproduksi
-$routes->get('laporan-produksi', 'Laporan_produksi::index');
-$routes->post('/laporan_produksi/hapus/(:num)', 'Laporan_produksi::hapus/$1');
-
-// Routing untuk cetak laporan
-$routes->get('laporan_produksi/cetak', 'Laporan_produksi::cetak');
-
-// Routing untuk ekspor laporan
-$routes->get('laporan_produksi/ekspor', 'Laporan_produksi::ekspor');
-
-// Routing untuk laporan bulanan
-$routes->get('laporan_produksi/cetak', 'Laporan_produksi::bulanan');
 
 
 

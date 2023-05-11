@@ -19,31 +19,27 @@
     <h4>Update Data Bahan Baku</h4>
    </div>
    <div class="card-body col-md-5">
-    <form action="<?=site_url('bahan_baku/update/'.$bahan_baku->id_bahan_baku)?>" method="post" autocomplate="off">
+    <form action="<?=site_url('bahan_baku/update/'.$bahan_baku->id_bahan_baku)?>" method="post" autocomplete="off"
+     enctype="multipart/form-data">
      <input type="hidden" name="_method" value="PUT">
      <div class="form-group">
       <label>Nama Bahan Baku*</label>
-      <input type="text" name="nama_bahan_baku" value="<?=$bahan_baku->nama_bahan_baku?>" class="form-control" required
-       autofocus>
+      <textarea name="nama_bahan_baku" class="form-control" style="width: 100%; height: auto; min-height: 150px;"
+       required autofocus><?= $bahan_baku->nama_bahan_baku ?></textarea>
      </div>
      <div class="form-group">
-      <label>Deskripsi Bahan Baku*</label>
-      <input type="textarea" name="deskripsi_bahan_baku" value="<?=$bahan_baku->deskripsi_bahan_baku?>" class="form-control"
-       required>
+      <label>Harga Bahan Baku*</label>
+      <div class="input-group">
+       <div class="input-group-prepend">
+        <span class="input-group-text">Rp.</span>
+       </div>
+       <input type="number" name="harga_bahan" value="<?= $bahan_baku->harga_bahan ?>" class="form-control" required>
+      </div>
      </div>
-     <div class="form-group">
-    <label>Satuan Bahan Baku*</label>
-    <select name="satuan_bahan_baku" class="form-control" required>
-        <option value="">Pilih Satuan</option>
-        <option value="kg">kg</option>
-        <option value="gram">gram</option>
-        <option value="liter">liter</option>
-        <option value="ml">ml</option>
-    </select>
-    </div>
+
      <div class="form-group">
       <label>Stok Bahan Baku*</label>
-      <input type="number" name="stok_bahan_baku" value="<?=$bahan_baku->stok_bahan_baku?>" class="form-control" required>
+      <input type="number" name="stok" value="<?=$bahan_baku->stok?>" class="form-control" required>
      </div>
      <div>
       <button type="submit" class="btn btn-success"><i class="fas fa-paper-plane"> Save</i></button>

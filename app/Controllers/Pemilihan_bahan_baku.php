@@ -4,15 +4,22 @@ namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourcePresenter;
 use App\Models\BahanbakuModel;
-use App\Models\ProduksiModel;
+use App\Models\PesananprodukModel;
+use App\Models\PemilihanbahanModel;
 
-class Produksi extends ResourcePresenter
+class Pemilihan_bahan_baku extends ResourcePresenter
 {
-    
-    function __construct(){
+    protected $pemilihan_bahan_baku;
+    protected $bahan_baku;
+    protected $pesanan_produk;
+
+    public function __construct()
+    {
+        $this->pemilihan_bahan_baku = new PemilihanBahanModel();
         $this->bahan_baku = new BahanbakuModel();
-        $this->produksi = new ProduksiModel();
+        $this->pesanan_produk = new PesananprodukModel();
     }
+
     /**
      * Present a view of resource objects
      *
@@ -20,8 +27,8 @@ class Produksi extends ResourcePresenter
      */
     public function index()
     {
-        $data['produksi'] = $this->produksi->getAll();
-        return view('produksi/produksi', $data);
+        $data['pemilihan_bahan_baku'] = $this->pemilihan_bahan_baku->getAll();
+        return view('pemilihan_bahan_baku/pemilihan_bahan_baku', $data);
     }
 
     /**
@@ -44,7 +51,7 @@ class Produksi extends ResourcePresenter
     public function new()
     {
         $data['bahan_baku'] = $this->bahan_baku->findAll();
-        return view('produksi/new', $data);
+        return view('pemilihan_bahan_baku/new', $data);
     }
 
     /**
@@ -55,9 +62,9 @@ class Produksi extends ResourcePresenter
      */
     public function create()
     {
-        $data  = $this->request->getPost();
-        $this->produksi->insert($data);
-        return redirect()->to(site_url('produksi'))->with('success', 'Data berhasil ditambahkan');
+        $data = $this->request->getPost();
+        $this->pemilihan_bahan_baku->insert($data);
+        return redirect()->to(site_url('pemilihan_bahan_baku'))->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -69,12 +76,12 @@ class Produksi extends ResourcePresenter
      */
     public function edit($id = null)
     {
-        $produksi = $this->produksi->find($id);
-        if(is_object($produksi)){
+        $pemilihan_bahan_baku = $this->pemilihan_bahan_baku->find($id);
+        if (is_object($pemilihan_bahan_baku)) {
             $data['bahan_baku'] = $this->bahan_baku->findAll();
-            $data['produksi'] = $produksi;
-        return view('produksi/edit', $data);
-        }else{
+            $data['pemilihan_bahan_baku'] = $pemilihan_bahan_baku;
+            return view('pemilihan_bahan_baku/edit', $data);
+        } else {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
     }
@@ -90,32 +97,29 @@ class Produksi extends ResourcePresenter
     public function update($id = null)
     {
         $data = $this->request->getPost();
-        $this->produksi->update($id, $data);
-        return redirect()->to(site_url('produksi'))->with('success', 'Data berhasil diubah');
+        $this->pemilihan_bahan_baku->update($id, $data);
+        return redirect()->to(site_url('pemilihan_bahan_baku'))->with('success', 'Data berhasil diubah');
     }
 
     /**
      * Present a view to confirm the deletion of a specific resource object
      *
-     * @param mixed $id
-     *
-     * @return mixed
-     */
-    public function remove($id = null)
-    {
-        //
-    }
+     * @param mixed
+     * public function remove($id = null)
+{
+    //
+}
 
-    /**
-     * Process the deletion of a specific resource object
-     *
-     * @param mixed $id
-     *
-     * @return mixed
-     */
-    public function delete($id = null)
-    {
-        $this->produksi->delete($id);
-        return redirect()->to(site_url('produksi'))->with('danger', 'Data berhasil dihapus');
-    }
+/**
+ * Process the deletion of a specific resource object
+ *
+ * @param mixed $id
+ *
+ * @return mixed
+ */
+public function delete($id = null)
+{
+    $this->pemilihan_bahan_baku->delete($id);
+    return redirect()->to(site_url('pemilihan_bahan_baku'))->with('danger', 'Data berhasil dihapus');
+}
 }

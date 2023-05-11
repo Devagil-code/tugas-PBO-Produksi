@@ -1,15 +1,15 @@
 <?= $this->extend('layout/default') ?>
 
 <?= $this->section('title') ?>
-<title>Data bahan baku</title>
+<title>Data Bahan Baku</title>
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
 <section class="section">
  <div class="section-header">
-  <h1>bahan baku</h1>
+  <h1>Bahan Baku</h1>
   <div class="seaction-header-button ml-2">
-   <a href="<?=site_url('bahan_baku/new')?>" class="btn btn-primary"> Add New</a>
+   <a href="<?=site_url('bahan_baku/new')?>" class="btn btn-primary"> Tambah Data</a>
   </div>
  </div>
 
@@ -37,18 +37,16 @@
 
   <div class="card">
    <div class="card-header">
-    <h4>Data bahan baku</h4>
+    <h4>Data Bahan Baku</h4>
    </div>
    <div class="card-body table-responsive">
     <table class="table table-striped table-md" id="table1">
      <thead>
       <tr>
        <th>No</th>
-       <th>nama bahan baku</th>
-       <th>Deskripsi Bahan baku</th>
-       <th>Satuan</th>
+       <th>Bahan Baku</th>
+       <th>Harga</th>
        <th>Stok</th>
-       <!-- <th>Gambar</th> -->
        <th>Action</th>
       </tr>
      </thead>
@@ -56,17 +54,20 @@
       <?php foreach ($bahan_baku as $key => $value) : ?>
       <tr>
        <td><?=$key + 1 ?></td>
-       <td><?=$value->nama_bahan_baku?></td>
-       <td><?=$value->deskripsi_bahan_baku?></td>
-       <td><?=$value->satuan_bahan_baku?></td>
-       <td><?=$value->stok_bahan_baku?></td>
+       <td class="text-wrap"><?=$value->nama_bahan_baku?></td>
+       <td>Rp.<?= number_format($value->harga_bahan, 0, ',', '.') ?></td>
+       <td><?=$value->stok?></td>
        <td>
-        <a href="<?=site_url('bahan_baku/edit/'.$value->id_bahan_baku)?>" class="btn btn-warning btn-sm"> <i
-          class="fas fa-pencil-alt"></i></a>
-        <form action="<?=site_url('bahan_baku/delete/'.$value->id_bahan_baku)?>" method="post" class="d-inline" onsubmit="return confirm('Yakin Hapus Data?')">
-         <button href="" class=" btn btn-danger btn-sm"><i class="fas fa-trash"></i>
-         </button>
-        </form>
+        <div class="d-flex">
+         <a href="<?=site_url('bahan_baku/edit/'.$value->id_bahan_baku)?>" class="btn btn-warning btn-sm mr-1"> <i
+           class="fas fa-pencil-alt"></i></a>
+         <form action="<?=site_url('bahan_baku/delete/'.$value->id_bahan_baku)?>" method="post" class="d-inline"
+          onsubmit="return confirm('Yakin Hapus Data?')">
+          <button href="" class="btn btn-danger btn-sm">
+           <i class="fas fa-trash"></i>
+          </button>
+         </form>
+        </div>
        </td>
       </tr>
       <?php endforeach; ?>

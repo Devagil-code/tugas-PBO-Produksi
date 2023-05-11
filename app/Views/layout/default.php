@@ -251,11 +251,11 @@
     <aside id="sidebar-wrapper">
      <div class="sidebar-brand">
       <img src="<?=base_url()?>/template/assets/img/unsplash/unipi.png" alt="logo" style="width: 50px; height: 50px;">
-      <a href="<?=site_url()?>">PRODPLAN</a>
+      <a href="<?=site_url()?>">PRODLAP</a>
      </div>
 
      <div class="sidebar-brand sidebar-brand-sm">
-      <a href="<?=site_url()?>">PN</a>
+      <a href="<?=site_url()?>">PL</a>
      </div>
      <ul class="sidebar-menu">
       <?= $this->include('layout/menu') ?>

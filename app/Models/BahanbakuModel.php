@@ -9,5 +9,5 @@ class BahanbakuModel extends Model
     protected $table            = 'bahan_baku';
     protected $primaryKey       = 'id_bahan_baku';
     protected $returnType       = 'object';
-    protected $allowedFields    = ['nama_bahan_baku', 'deskripsi_bahan_baku', 'satuan_bahan_baku', 'stok_bahan_baku', 'gambar_bahan_baku'];
+    protected $allowedFields    = ['nama_bahan_baku', 'harga_bahan', 'stok'];
 }
