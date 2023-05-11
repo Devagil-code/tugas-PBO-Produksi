@@ -8,7 +8,7 @@
 <section class="section">
  <div class="section-header">
   <div class="seaction-header-back">
-   <a href="<?=site_url('detail_produksi')?>" class="btn"><i class="fas fa-arrow-left"></i></a>
+   <a href="<?=site_url('pemilihan_bahan_baku')?>" class="btn"><i class="fas fa-arrow-left"></i></a>
   </div>
   <h1>Pilih Bahan</h1>
  </div>
@@ -19,7 +19,7 @@
     <h4>Pilih Bahan</h4>
    </div>
    <div class="card-body col-md-5">
-    <form action="<?=site_url('detail_produksi')?>" method="post" autocomplate="off">
+    <form action="<?=site_url('pemilihan_bahan_baku')?>" method="post" autocomplate="off">
      <div class="form-group">
       <label>Produk*</label>
       <select name="id_pesanan" class="form-control" required>
@@ -34,7 +34,9 @@
       <select name="id_pesanan" class="form-control" required>
        <option value="" hidden></option>
        <?php foreach ($pesanan_produk as $key => $value) : ?>
-       <option value="<?=$value->id_pesanan?>"><?=$value->gambar?></option>
+       <option value="<?=$value->id_pesanan?>"
+        style="background-image: url('<?= $value->gambar ?>'); background-repeat: no-repeat; background-size: contain; padding-left: 20px;">
+        <?=$value->gambar?></option>
        <?php endforeach;?>
       </select>
      </div>

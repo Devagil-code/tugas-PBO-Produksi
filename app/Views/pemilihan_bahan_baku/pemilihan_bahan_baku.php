@@ -66,13 +66,14 @@
        <td><?=$value->stok?></td>
 
        <td>
-        <a href="<?=site_url('pesanan_produk/edit/'.$value->id_pesanan)?>" class="btn btn-warning btn-sm"> <i
-          class="fas fa-pencil-alt"></i></a>
-        <form action="<?=site_url('pesanan_produk/delete/'.$value->id_pesanan)?>" method="post" class="d-inline"
-         onsubmit="return confirm('Yakin Hapus Data?')">
-         <button href="" class=" btn btn-danger btn-sm"><i class="fas fa-trash"></i>
-         </button>
-        </form>
+        <div class="d-flex">
+         <form action="<?=site_url('pemilihan_bahan_baku/delete/'.$value->id_pemilihan)?>" method="post"
+          class="d-inline" onsubmit="return confirm('Yakin Hapus Data?')">
+          <button href="" class="btn btn-danger btn-sm">
+           <i class="fas fa-trash"></i>
+          </button>
+         </form>
+        </div>
        </td>
       </tr>
       <?php endforeach; ?>

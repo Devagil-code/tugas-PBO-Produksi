@@ -51,8 +51,10 @@ class Pemilihan_bahan_baku extends ResourcePresenter
     public function new()
     {
         $data['bahan_baku'] = $this->bahan_baku->findAll();
+        $data['pesanan_produk'] = $this->pesanan_produk->findAll(); // Tambahkan ini
         return view('pemilihan_bahan_baku/new', $data);
     }
+    
 
     /**
      * Process the creation/insertion of a new resource object.
