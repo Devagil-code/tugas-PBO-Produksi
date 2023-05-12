@@ -9,7 +9,7 @@ class PemilihanbahanModel extends Model
     protected $table            = 'pemilihan_bahan_baku';
     protected $primaryKey       = 'id_pemilihan';
     protected $returnType       = 'object';
-    protected $allowedFields    = ['id_pesanan', 'id_bahan_baku'];
+    protected $allowedFields    = ['id_pesanan', 'id_bahan_baku', 'pilih_bahan'];
 
     public function getAll()
     {

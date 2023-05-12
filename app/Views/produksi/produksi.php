@@ -1,14 +1,15 @@
 <?= $this->extend('layout/default') ?>
 
 <?= $this->section('title') ?>
-<title>Data Pilih Bahan</title>
+<title>Data Produksi</title>
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
 <section class="section">
  <div class="section-header">
+  <h1>Produksi</h1>
   <div class="seaction-header-button ml-2">
-   <a href="<?=site_url('pemilihan_bahan_baku/new')?>" class="btn btn-primary">Pilih Bahan</a>
+   <a href="<?=site_url('produksi/new')?>" class="btn btn-primary"> Proses Data Produksi</a>
   </div>
  </div>
 
@@ -36,41 +37,44 @@
 
   <div class="card">
    <div class="card-header">
-    <h4>Data Pilih Bahan</h4>
+    <h4>Data produksi</h4>
    </div>
    <div class="card-body table-responsive">
     <table class="table table-striped table-md" id="table1">
      <thead>
       <tr>
        <th>No</th>
-       <th>Produk</th>
+       <th>Nama Pelanggan</th>
+       <th>Pesanan</th>
        <th>Gambar</th>
-       <th>Tipe Bahan</th>
+       <th>Jumlah Produksi</th>
+       <th>Tanggal Produksi</th>
+       <th>Tipe Bahan Baku</th>
        <th>Bahan Baku</th>
-       <th>Harga</th>
-       <th>Stok</th>
        <th>Action</th>
       </tr>
      </thead>
      <tbody>
-      <?php foreach ($pemilihan_bahan_baku as $key => $value) : ?>
+      <?php foreach ($produksi as $key => $value) : ?>
       <tr>
        <td><?=$key + 1 ?></td>
+       <td><?=$value->nama_pelanggan?></td>
        <td><?=$value->produk_dipesan?></td>
        <td>
         <?php if (!empty($value->gambar)) { ?>
         <img src="<?= base_url($value->gambar) ?>" style="width:70px; height:70px;">
         <?php } ?>
        </td>
+       <td><?=$value->jumlah_produksi?></td>
+       <td><?=$value->tanggal_produksi?></td>
        <td><?=$value->pilih_bahan?></td>
        <td><?=$value->nama_bahan_baku?></td>
-       <td>Rp.<?= number_format($value->harga_bahan, 0, ',', '.') ?></td>
-       <td><?=$value->stok?></td>
-
        <td>
-        <div class="d-flex">
-         <form action="<?=site_url('pemilihan_bahan_baku/delete/'.$value->id_pemilihan)?>" method="post"
-          class="d-inline" onsubmit="return confirm('Yakin Hapus Data?')">
+       <div class="d-flex">
+         <a href="<?=site_url('produksi/edit/'.$value->id_produksi)?>" class="btn btn-warning btn-sm mr-1"> <i
+           class="fas fa-pencil-alt"></i></a>
+         <form action="<?=site_url('produksi/delete/'.$value->id_produksi)?>" method="post" class="d-inline"
+          onsubmit="return confirm('Yakin Hapus Data?')">
           <button href="" class="btn btn-danger btn-sm">
            <i class="fas fa-trash"></i>
           </button>
