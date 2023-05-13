@@ -35,6 +35,7 @@
      <div class="form-group">
       <label>nama produk yang dipesan*</label>
       <select name="produk_dipesan" value="<?=$pesanan_produk->tanggal_pemesanan?>" class="form-control" required>
+      <option value="" disabled selected>Pilih Produk</option>
        <option value="Asus ROG">Asus ROG</option>
        <option value="Acer">Acer</option>
        <option value="Toshiba">Toshiba</option>
