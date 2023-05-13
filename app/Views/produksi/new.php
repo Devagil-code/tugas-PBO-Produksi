@@ -68,7 +68,7 @@
       </select>
      </div>
      <div class="form-group">
-      <label>Bahan Baku*</label>
+      <label>Nama Bahan Baku*</label>
       <select name="nama_bahan_baku" class="form-control" required>
        <option value="" hidden></option>
        <?php foreach ($bahan_baku as $key => $value) : ?>

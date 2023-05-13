@@ -71,8 +71,6 @@
        <td><?=$value->nama_bahan_baku?></td>
        <td>
        <div class="d-flex">
-         <a href="<?=site_url('produksi/edit/'.$value->id_produksi)?>" class="btn btn-warning btn-sm mr-1"> <i
-           class="fas fa-pencil-alt"></i></a>
          <form action="<?=site_url('produksi/delete/'.$value->id_produksi)?>" method="post" class="d-inline"
           onsubmit="return confirm('Yakin Hapus Data?')">
           <button href="" class="btn btn-danger btn-sm">
